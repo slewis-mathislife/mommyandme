@@ -48,7 +48,7 @@
     background:radial-gradient(125% 85% at 50% 0%, var(--lav) 0%, var(--lav-mid) 40%, var(--grape) 78%, var(--peri) 100%);
     min-height:100%;
     display:flex;align-items:center;justify-content:center;
-    padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));
+    padding:40px 16px calc(20px + env(safe-area-inset-bottom,0px));
     overflow-x:hidden;
   }
   @media (prefers-color-scheme: dark){
@@ -111,7 +111,7 @@
 
   .topic{
     text-align:center;font-family:"Baloo 2",cursive;font-weight:700;font-size:14px;
-    color:var(--grape);background:var(--grape-soft);border-radius:999px;
+    color:#fff;background:var(--grape);border-radius:999px;
     padding:4px 14px;display:inline-block;margin:14px auto 0;
   }
   .topic-wrap{text-align:center}
@@ -166,6 +166,10 @@
     display:block;margin:4px auto 0;width:min(60%,210px);height:auto;
     filter:drop-shadow(0 8px 12px rgba(46,30,70,.4));
   }
+  .backgame{display:block;margin:6px auto 2px;font-family:"Baloo 2",cursive;font-weight:700;
+    font-size:13.5px;cursor:pointer;border:none;border-radius:999px;padding:8px 16px;
+    color:#fff;background:var(--grape-deep);box-shadow:0 3px 0 rgba(0,0,0,.15)}
+  .backgame:active{transform:translateY(2px)}
   .nav{display:flex;gap:8px;justify-content:center;margin-top:2px}
   .navbtn{
     font-family:"Baloo 2",cursive;font-weight:700;font-size:14px;cursor:pointer;
@@ -277,6 +281,7 @@
 
     <div class="card story" id="storyCard" style="display:none">
       <h2 class="story-title">Journey &amp; Peanut's Best Tuesday</h2>
+      <button class="backgame" id="backGame">🎮 Back to the game</button>
       <div class="scene" id="scene"></div>
       <p class="story-text" id="storyText"></p>
       <div class="track" id="storyDots"></div>
@@ -402,7 +407,7 @@ const tabGame=$('tabGame'),tabStory=$('tabStory'),gameCard=$('gameCard'),storyCa
 const scene=$('scene'),storyText=$('storyText'),storyDots=$('storyDots'),
       prevPage=$('prevPage'),nextPage=$('nextPage'),pageNum=$('pageNum');
 
-const C={skin:'#6E4B2A',skinD:'#4E3419',dress:'#D9BEF2',dressD:'#B98FE0',bow:'#7C4DB8',
+const C={skin:'#8A6238',skinD:'#5C3F22',dress:'#D9BEF2',dressD:'#B98FE0',bow:'#7C4DB8',
   hair:'#241a12',ele:'#A6B2BE',eleD:'#7E8B98',eleS:'#5C6874',tusk:'#FFF4DC',
   cone:'#E4B36A',coneL:'#C9954B',scoop:'#FBF3DF',drz:'#E4D2A6'};
 
@@ -523,6 +528,7 @@ tabStory.addEventListener('click',()=>{
   tabStory.classList.add('active');tabGame.classList.remove('active');
   if(!scene.innerHTML) renderStory();
 });
+document.getElementById('backGame').addEventListener('click',()=>tabGame.click());
 
 </script>
 </body>
